@@ -16,6 +16,7 @@ namespace TeknologiProjekt
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly object _lock = new object();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,10 +28,13 @@ namespace TeknologiProjekt
             AddPoints();
             tbCount.Text = Count.ToString();
 
-        }
+        } 
         void AddPoints()
         {
-            Count++;
+            lock (_lock)
+            {
+                Count++;
+            }
         }
 
 
