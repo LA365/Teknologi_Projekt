@@ -1,0 +1,36 @@
+﻿<Window x:Class="TeknologiProjekt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeknologiProjekt"
+        mc:Ignorable="d"
+        Title="Clicker Game" Height="450" Width="800">
+    <Grid Background="#F0F0F0">
+        <StackPanel Orientation="Vertical" Margin="20">
+            <!-- Titel -->
+            <TextBlock Text="Clicker Game" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <!-- Points Display -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                <TextBlock Text="Points: " FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="tbCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="Green"/>
+            </StackPanel>
+
+            <!-- Strength Display -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Click Strength: " FontSize="12" FontWeight="Bold"/>
+                <TextBlock x:Name="tbStrength" Text="1" FontSize="12" FontWeight="Bold" Foreground="Blue"/>
+            </StackPanel>
+
+            <!-- Main Click Button -->
+            <Button Content="CLICK ME!" HorizontalAlignment="Left" Height="120" Width="300" 
+                    Click="Button_Click" FontSize="18" FontWeight="Bold" Background="#4CAF50" Foreground="White" Margin="0,0,0,30"/>
+
+            <!-- Upgrade Button -->
+            <Button x:Name="btnUpgradeStrength" Content="Upgrade Strength (+1) - Cost: 10 Points" 
+                    HorizontalAlignment="Left" Height="50" Width="300" 
+                    Click="btnUpgradeStrength_Click" FontSize="12" Background="#FF9800" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>
