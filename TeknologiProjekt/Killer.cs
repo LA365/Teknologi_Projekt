@@ -4,7 +4,12 @@ using System.Text;
 
 namespace TeknologiProjekt
 {
-    internal class Killer
+    public static class Killer
     {
+        public async static void KillAsync(CancellationToken token)
+        {
+            Thread.Sleep(25000);
+            //token.Cancel = true;
+        }
     }
 }

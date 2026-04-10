@@ -16,26 +16,18 @@ namespace TeknologiProjekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static readonly object _lock = new object();
         public MainWindow()
         {
             InitializeComponent();
         }
-        int Count { get; set; } = 0;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddPoints();
-            tbCount.Text = Count.ToString();
+            Points.AddPoints();
+            tbCount.Text = Points.GetPoints().ToString();
 
         } 
-        void AddPoints()
-        {
-            lock (_lock)
-            {
-                Count++;
-            }
-        }
+
 
 
     }
