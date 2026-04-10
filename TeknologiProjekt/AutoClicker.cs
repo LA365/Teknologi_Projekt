@@ -6,25 +6,36 @@ namespace TeknologiProjekt
 {
     class AutoClicker
     {
+        private readonly CancellationTokenSource _tokenSource;
         private readonly CancellationToken _token;
         private readonly Thread t;
         private static readonly Semaphore _semaphore = new Semaphore(1, 100);
 
-        //public AutoClicker(CancellationToken token)
-        //{
-        //    _token = token;
-        //    t = new Thread(Start);
-        //}
-        //static void Start(CancellationToken token)
-        //{
-        //    _semaphore.WaitOne();
-        //    async Killer.Kill(_token);
+        public AutoClicker(CancellationToken token)
+        {
+            _tokenSource = new CancellationTokenSource();
+            _token = token;
+            t = new Thread(Start);
+            t.Start(); 
+        }
 
-        //    while(_token.IsCancellationRequested)
-        //    {
-        //        Points.AddPoints();
-        //        Thread.Sleep(2000);
-        //    }
-        //}
+        private void Start()
+        {
+            _semaphore.WaitOne();
+            try
+            {
+                _tokenSource.CancelAfter(25000);
+                while (!_token.IsCancellationRequested)
+                {
+                    Points.AddPoints();
+                    Thread.Sleep(2000);
+                }
+            } 
+            finally 
+            { 
+                _semaphore.Release(); 
+            }
+
+        }
     }
 }
