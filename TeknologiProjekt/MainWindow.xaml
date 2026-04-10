@@ -1,0 +1,14 @@
+﻿<Window x:Class="TeknologiProjekt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeknologiProjekt"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Height="160" Margin="164,144,0,0" VerticalAlignment="Top" Width="475" Click="Button_Click"/>
+        <TextBox x:Name="tbCount" HorizontalAlignment="Left" Height="44" Margin="81,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235"/>
+
+    </Grid>
+</Window>
