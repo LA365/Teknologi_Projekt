@@ -11,10 +11,10 @@ namespace TeknologiProjekt
         private readonly Thread t;
         private static readonly Semaphore _semaphore = new Semaphore(1, 100);
 
-        public AutoClicker(CancellationToken token)
+        public AutoClicker()
         {
             _tokenSource = new CancellationTokenSource();
-            _token = token;
+            _token = _tokenSource.Token;
             t = new Thread(Start);
             t.Start(); 
         }
