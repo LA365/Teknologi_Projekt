@@ -21,14 +21,16 @@ namespace TeknologiProjekt
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MainButton(object sender, RoutedEventArgs e)
         {
             Points.AddPoints();
             tbCount.Text = Points.GetPoints().ToString();
 
-        } 
+        }
 
-
-
+        private void AutoClickerButton(object sender, RoutedEventArgs e)
+        {
+            new AutoClicker(tbCount obj);
+        }
     }
 }

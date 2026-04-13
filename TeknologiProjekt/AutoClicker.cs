@@ -4,14 +4,14 @@ using System.Text;
 
 namespace TeknologiProjekt
 {
-    class AutoClicker
+    public class AutoClicker
     {
         private readonly CancellationTokenSource _tokenSource;
         private readonly CancellationToken _token;
         private readonly Thread t;
         private static readonly Semaphore _semaphore = new Semaphore(1, 100);
 
-        public AutoClicker()
+        public AutoClicker(object obj)
         {
             _tokenSource = new CancellationTokenSource();
             _token = _tokenSource.Token;
@@ -28,7 +28,7 @@ namespace TeknologiProjekt
                 while (!_token.IsCancellationRequested)
                 {
                     Points.AddPoints();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(500);
                 }
             } 
             finally 
