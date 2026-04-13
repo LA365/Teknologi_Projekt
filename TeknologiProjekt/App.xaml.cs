@@ -25,9 +25,6 @@ namespace TeknologiProjekt
             }
 
             base.OnStartup(e);
-
-            MainWindow mainW = new MainWindow();
-            mainW.Show();
         }
     }
 }
