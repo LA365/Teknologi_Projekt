@@ -20,6 +20,7 @@ namespace TeknologiProjekt
         {
             InitializeComponent();
         }
+        public void UpdateUI() => Application.Current.Dispatcher.Invoke(() => tbCount.Text = Points.GetPoints().ToString());
 
         private void MainButton(object sender, RoutedEventArgs e)
         {
@@ -30,7 +31,7 @@ namespace TeknologiProjekt
 
         private void AutoClickerButton(object sender, RoutedEventArgs e)
         {
-            new AutoClicker(tbCount obj);
+            new AutoClicker(UpdateUI);
         }
     }
 }

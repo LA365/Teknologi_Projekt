@@ -10,9 +10,11 @@ namespace TeknologiProjekt
         private readonly CancellationToken _token;
         private readonly Thread t;
         private static readonly Semaphore _semaphore = new Semaphore(1, 100);
+        private readonly Action _updateUI;
 
-        public AutoClicker(object obj)
+        public AutoClicker(Action updateUI)
         {
+            _updateUI = updateUI;
             _tokenSource = new CancellationTokenSource();
             _token = _tokenSource.Token;
             t = new Thread(Start);
@@ -24,10 +26,11 @@ namespace TeknologiProjekt
             _semaphore.WaitOne();
             try
             {
-                _tokenSource.CancelAfter(25000);
+                _tokenSource.CancelAfter(2500);
                 while (!_token.IsCancellationRequested)
                 {
                     Points.AddPoints();
+                    _updateUI.Invoke();
                     Thread.Sleep(500);
                 }
             } 
