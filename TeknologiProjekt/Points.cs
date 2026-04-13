@@ -16,6 +16,14 @@ namespace TeknologiProjekt
                 _points++;
             }
         }
+
+        public static void RemovePoints(int number)
+        {
+            lock(_lock)
+            {
+                _points -= number;
+            }
+        }
         public static int GetPoints()
         {
             return _points;

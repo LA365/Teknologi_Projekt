@@ -10,6 +10,7 @@
         <Button Content="Button" HorizontalAlignment="Left" Height="160" Margin="164,144,0,0" VerticalAlignment="Top" Width="475" Click="MainButton"/>
         <TextBox x:Name="tbCount" HorizontalAlignment="Left" Height="44" Margin="81,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235"/>
         <Button x:Name="autoClickButton" Content="Auto Clicker" HorizontalAlignment="Left" Margin="455,86,0,0" VerticalAlignment="Top" Click="AutoClickerButton"/>
+        <ListBox x:Name="lbAutoClickers" Margin="0,144,641,27" SelectionChanged="ListBox_SelectionChanged"/>
 
     </Grid>
 </Window>

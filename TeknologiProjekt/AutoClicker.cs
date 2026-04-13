@@ -26,7 +26,7 @@ namespace TeknologiProjekt
             _semaphore.WaitOne();
             try
             {
-                _tokenSource.CancelAfter(2500);
+                _tokenSource.CancelAfter(25000);
                 while (!_token.IsCancellationRequested)
                 {
                     Points.AddPoints();
@@ -36,7 +36,8 @@ namespace TeknologiProjekt
             } 
             finally 
             { 
-                _semaphore.Release(); 
+                _semaphore.Release();
+                
             }
 
         }
