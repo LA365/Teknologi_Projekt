@@ -18,11 +18,11 @@ namespace TeknologiProjekt
     public partial class MainWindow : Window
     {
         private int cost = 25;
-        private ObservableCollection<string> AutoClickersBought {  get; set; } = new ObservableCollection<string>();
+        private ObservableCollection<string> CurrentAutoClickers {  get; set; } = new ObservableCollection<string>();
         public MainWindow()
         {
             InitializeComponent();
-            lbAutoClickers.ItemsSource = AutoClickersBought;
+            lbAutoClickers.ItemsSource = CurrentAutoClickers;
         }
         public void UpdateUI() => Application.Current.Dispatcher.Invoke(() => tbCount.Text = Points.GetPoints().ToString());
 
@@ -32,19 +32,26 @@ namespace TeknologiProjekt
             tbCount.Text = Points.GetPoints().ToString();
         }
 
+        public void RemoveClickerUI() => Application.Current.Dispatcher.Invoke(() => CurrentAutoClickers.RemoveAt(0));
+
         private void AutoClickerButton(object sender, RoutedEventArgs e)
         {
             if (Points.GetPoints() >= cost)
             {
                 Points.RemovePoints(cost);
-                AutoClickersBought.Add("Auto Clicker");
-                new AutoClicker(UpdateUI);
+                CurrentAutoClickers.Add("Auto Clicker");
+                var clicker = new AutoClicker(UpdateUI, RemoveClickerUI);
             }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

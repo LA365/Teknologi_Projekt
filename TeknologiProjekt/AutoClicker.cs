@@ -11,13 +11,16 @@ namespace TeknologiProjekt
         private readonly Thread t;
         private static readonly Semaphore _semaphore = new Semaphore(1, 100);
         private readonly Action _updateUI;
+        private readonly Action _onFinished;
 
-        public AutoClicker(Action updateUI)
+        public AutoClicker(Action updateUI, Action onFinished)
         {
             _updateUI = updateUI;
+            _onFinished = onFinished;
             _tokenSource = new CancellationTokenSource();
             _token = _tokenSource.Token;
             t = new Thread(Start);
+            t.IsBackground = true;
             t.Start(); 
         }
 
@@ -37,7 +40,7 @@ namespace TeknologiProjekt
             finally 
             { 
                 _semaphore.Release();
-                
+                _onFinished.Invoke();
             }
 
         }

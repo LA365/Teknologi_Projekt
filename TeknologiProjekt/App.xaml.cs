@@ -26,5 +26,16 @@ namespace TeknologiProjekt
 
             base.OnStartup(e);
         }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            if (_mutex != null)
+            {
+                _mutex.ReleaseMutex();
+                _mutex.Dispose();
+                _mutex = null;
+            }
+            base.OnExit(e);
+        }
     }
 }
