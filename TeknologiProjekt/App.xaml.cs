@@ -29,9 +29,19 @@ namespace TeknologiProjekt
 
         protected override void OnExit(ExitEventArgs e)
         {
-            _mutex?.ReleaseMutex();
-            _mutex?.Dispose();
-            _mutex = null;
+            try
+            {
+                _mutex?.ReleaseMutex();
+            }
+            catch (ApplicationException)
+            {
+                // 
+            }
+            finally
+            {
+                _mutex?.Dispose();
+                _mutex = null;
+            }
 
             base.OnExit(e);
         }

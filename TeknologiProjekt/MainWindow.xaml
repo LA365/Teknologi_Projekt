@@ -7,11 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="160" Margin="164,144,0,0" VerticalAlignment="Top" Width="475" Click="MainButton"/>
-        <TextBox x:Name="tbCount" HorizontalAlignment="Left" Height="44" Margin="81,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235"/>
-        <Button x:Name="autoClickButton" Content="Auto Clicker" HorizontalAlignment="Left" Margin="455,86,0,0" VerticalAlignment="Top" Click="AutoClickerButton"/>
-        <ListBox x:Name="lbAutoClickers" Margin="0,144,641,27" SelectionChanged="ListBox_SelectionChanged"/>
-        <Button Content="X" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
+        <Button Grid.Row="0" Grid.Column="1" Content="X" Width="25" Height="25" Margin="10" Click="Button_Click"/>
+
+        <TextBox x:Name="tbCount" Grid.Row="1" Grid.Column="0" Height="44" Margin="10" TextWrapping="Wrap" Text=""/>
+
+        <Button x:Name="autoClickButton" Grid.Row="1" Grid.Column="1" Content="Auto Clicker" Margin="10" Click="AutoClickerButton"/>
+
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Button" MinHeight="160" Margin="10" Click="MainButton"/>
+
+        <ListBox x:Name="lbAutoClickers" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" SelectionChanged="ListBox_SelectionChanged"/>
     </Grid>
 </Window>
