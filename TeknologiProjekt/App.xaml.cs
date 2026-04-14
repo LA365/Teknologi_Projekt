@@ -10,7 +10,7 @@ namespace TeknologiProjekt
     /// </summary>
     public partial class App : Application
     {
-        private static Mutex _mutex;
+        private static Mutex? _mutex;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -29,12 +29,10 @@ namespace TeknologiProjekt
 
         protected override void OnExit(ExitEventArgs e)
         {
-            if (_mutex != null)
-            {
-                _mutex.ReleaseMutex();
-                _mutex.Dispose();
-                _mutex = null;
-            }
+            _mutex?.ReleaseMutex();
+            _mutex?.Dispose();
+            _mutex = null;
+
             base.OnExit(e);
         }
     }
